@@ -41,3 +41,24 @@ wordpress
 
 * `docker run -i -t` : 표준 입출력이 활성화된 상호작용이 가능한 쉘 환경을 사용한다.
 * `docker run -d` : 입출력이 없는 상태로 컨테이너를 실행한다.
+
+## 호스트와 볼륨 공유
+
+```bash
+docker run -d \
+--name wordpressdb_hostvolume \
+-e MYSQL_ROOT_PASSWORD=password \
+-e MYSQL_DATABASE=wordpress \
+-v /home/wordpress_db:/var/lib/mysql \
+--platform linux/amd64 \
+mysql:5.7
+```
+
+```bash
+docker run -d \
+-e WORDPRESS_DB_PASSWORD=password \
+--name wordpress_hostvolume \
+--link wordpressdb_hostvolume:mysql \
+-p 80 \
+wordpress
+```
