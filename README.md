@@ -62,3 +62,31 @@ docker run -d \
 -p 80 \
 wordpress
 ```
+
+## 도커 볼륨 
+
+```bash
+docker volume create --name myvolume
+```
+
+```bash
+docker volume ls
+```
+
+```bash
+docker run -i -t --name myvolume_1 \
+-v myvolume:/root/ \
+ubuntu:14.04
+
+echo hello, volume! >> /root/volume
+
+cat /root/volume 
+```
+
+```bash
+docker run -i -t --name myvolume_2 \
+-v myvolume:/root/ \
+ubuntu:14.04
+
+cat /root/volume
+```
