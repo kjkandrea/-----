@@ -36,3 +36,8 @@ docker run -d \
 -p 80 \
 wordpress
 ```
+
+## -i -t vs -d
+
+* `docker run -i -t` : 표준 입출력이 활성화된 상호작용이 가능한 쉘 환경을 사용한다.
+* `docker run -d` : 입출력이 없는 상태로 컨테이너를 실행한다.
