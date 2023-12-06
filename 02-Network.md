@@ -63,7 +63,7 @@ docker network inspect mybridge
                 "IPv4Address": "172.18.0.2/16",
                 "IPv6Address": ""
             }
-        },
+        }
     }
 ]
 ```
