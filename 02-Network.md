@@ -39,3 +39,35 @@ docker network disconnect mybridge mynetwork_container
 docker network connect mybridge mynetwork_container
 ```
 
+```bash
+docker network inspect mybridge
+```
+
+```json
+[
+    {
+        "Name": "mybridge",
+        "IPAM": {
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Containers": {
+            "f846568eea06bac1e9a3823c4a96a013c4aa7df6318ed253540ca1e28a434fef": {
+                "Name": "mynetwork_container",
+                "EndpointID": "35db146bdb4f6329c4a0ce19e3e8d20208776a3fbabf74ca19211f474e17428e",
+                "MacAddress": "02:42:ac:12:00:02",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+    }
+]
+
+```
+
+### 호스트 네트워크
+
