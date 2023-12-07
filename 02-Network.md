@@ -81,5 +81,22 @@ ubunbu:14.04
 ifconfig
 ```
 
+### 컨테이너 네트워크
 
+다른 컨테이너와 네트워크 네임스페이스 환경을 공유할 수 있다.
+내부 IP를 새로 할당받지 않으며 호스트에 veth로 시작하는 사강 네트워크 인터페이스도 생성되지 않는다.
+
+```bash
+docker run -i -t -d --name network_container_1 ubuntu:14.04
+
+docker run -i -t -d --name network_container_2 \
+--net container:network_container_1 \
+ubuntu:14.04
+```
+
+```bash
+docker exec network_container_1 ifconfig
+
+docker exec network_container_2 ifconfig
+```
 
