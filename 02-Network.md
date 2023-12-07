@@ -70,3 +70,16 @@ docker network inspect mybridge
 
 ### 호스트 네트워크
 
+컨테이너의 내부의 애플리케이션을 별도의 포트 포워딩 없이 서비스 할 수 있다.
+
+```bash
+docker run -it --name network_host \
+--net host \
+ubunbu:14.04
+```
+```bash
+ifconfig
+```
+
+
+
