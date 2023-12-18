@@ -100,3 +100,38 @@ docker exec network_container_1 ifconfig
 docker exec network_container_2 ifconfig
 ```
 
+## 컨테이너 로깅
+
+도커는 컨테이너의 표준 출력(StdOut) 과 에러(StdErr) 로그를 별도의 메타데이터 파일로 저장하여 이를 확인하는 명령어를 제공한다.
+
+```bash
+docker run -d --name mysql \
+-e MYSQL_ROOT_PASSWORD=1234 \
+--platform linux/amd64 mysql:5.7
+```
+```bash
+docker logs mysql
+```
+
+logs 디버깅을 위해 의도적으로 ROOT PASSWORD 를 누락하고 mysql 컨테이너 생성
+
+```bash
+docker run -d --name no_passwd_mysql \
+--platform linux/amd64 mysql:5.7
+```
+
+```bash
+docker logs no_passwd_mysql
+```
+
+```bash
+2023-12-07 02:16:26+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.44-1.el7 started.
+2023-12-07 02:16:27+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+2023-12-07 02:16:27+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 5.7.44-1.el7 started.
+2023-12-07 02:16:28+00:00 [ERROR] [Entrypoint]: Database is uninitialized and password option is not specified
+    You need to specify one of the following as an environment variable:
+    - MYSQL_ROOT_PASSWORD
+    - MYSQL_ALLOW_EMPTY_PASSWORD
+    - MYSQL_RANDOM_ROOT_PASSWORD
+
+```
