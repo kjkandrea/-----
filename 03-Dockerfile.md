@@ -13,3 +13,17 @@
 ### Dockerfile 작성
 
 [03-Dockerfile/dockerfile](./03-Dockerfile/dockerfile)
+
+### Dockerfile 빌드
+
+#### 이미지 빌드
+
+```bash
+docker build -t mybuild:0.0 ./
+```
+
+#### 이미지로 컨테이너를 실행
+
+```bash
+docker run -d -P --name myserver mybuild:0.0
+```
