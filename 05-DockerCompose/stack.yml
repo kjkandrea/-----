@@ -1,0 +1,14 @@
+networks: {}
+services:
+  mysql:
+    command: mysqld
+    image: alicek106/composetest:mysql
+  web:
+    command: apachectl -DFOREGROUND
+    image: alicek106/composetest:web
+    links:
+      - mysql:db
+    ports:
+      - 80:80
+version: '3.0'
+volumes: {}
